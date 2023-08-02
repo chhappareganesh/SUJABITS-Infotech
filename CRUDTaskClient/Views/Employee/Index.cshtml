@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CRUDTaskClient.Models.EmployeeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Employees</h1>
+
+<p>
+    <a asp-action="Create">Add New Employee</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.EmployeeId  }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.EmployeeId  }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
